@@ -1,0 +1,6 @@
+<div [ngSwitch]="state" (click)="onSwitchState()" style="cursor: pointer;">
+    {{ title }}
+
+    <span *ngSwitchCase="1" class="fa fa-chevron-up"></span>
+    <span *ngSwitchCase="2" class="fa fa-chevron-down"></span>
+</div>

@@ -1,0 +1,50 @@
+<div class="card mt-4">
+  <h4 class="card-header">Recent transactions</h4>
+  <div class="card-body">
+    <input type="text" class="form-control" name="searchString" placeholder="Insert a search query here..."
+      [(ngModel)]="searchString" />
+
+    <table class="table mt-2 table-hover">
+      <thead>
+        <tr>
+          <th>
+            <app-clickable-head title="Sender" propertyName="senderEmail" (stateChanged)="onHeadChange($event)">
+            </app-clickable-head>
+          </th>
+          <th>
+            <app-clickable-head title="Recipient" propertyName="recipientEmail" (stateChanged)="onHeadChange($event)">
+            </app-clickable-head>
+          </th>
+
+          <th>
+            <app-clickable-head title="Amount" propertyName="amount" (stateChanged)="onHeadChange($event)">
+            </app-clickable-head>
+          </th>
+          <th>
+            <app-clickable-head title="Created" propertyName="creationDate" (stateChanged)="onHeadChange($event)">
+            </app-clickable-head>
+          </th>
+          <th>
+            <app-clickable-head title="Status" propertyName="status" (stateChanged)="onHeadChange($event)">
+            </app-clickable-head>
+          </th>
+          <th>
+            <app-clickable-head title="Since" propertyName="statusDate" (stateChanged)="onHeadChange($event)">
+            </app-clickable-head>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let transaction of transactions | filterBy: ['amount', 'senderEmail', 'recipientEmail']: searchString | orderBy : order" data-toggle="modal" data-target="#createModal" (click)="setExampleTransaction(transaction)" style="cursor: pointer" [ngClass]="{ 'table-success': transaction.status == 0 }" >
+          <td><small>{{transaction.senderEmail ? transaction.senderEmail : 'Parrot Wings'}}</small></td>
+          <td><small>{{transaction.recipientEmail}}</small></td>
+          <td><small>{{transaction.amount}}</small></td>
+          <td><small>{{transaction.creationDate | date: 'dd.MM.yyyy HH:mm:ss'}}</small></td>
+          <td><small>{{transaction.status | enumName:TransactionStatus }}</small></td>
+          <td><small>{{transaction.statusDate | date: 'dd.MM.yyyy HH:mm:ss'}}</small></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

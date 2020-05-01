@@ -1,0 +1,28 @@
+<div class="card mt-4">
+  <h4 class="card-header">User</h4>
+  <div class="card-body p-0">
+    <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between lh-condensed border-0 ">
+        <div>
+          <h6 class="my-0">Name</h6>
+        </div>
+        <span class="text-muted">{{ currentUser.name }}</span>
+      </li>
+      <li
+        class="list-group-item d-flex justify-content-between lh-condensed border-bottom-0 border-left-0 border-right-0">
+        <div>
+          <h6 class="my-0">Email</h6>
+        </div>
+        <span class="text-muted">{{ currentUser.email }}</span>
+      </li>
+      <li
+        class="list-group-item d-flex justify-content-between lh-condensed border-bottom-0 border-left-0 border-right-0">
+        <div>
+          <h6 class="my-0">Balance</h6>
+        </div>
+        <span class="text-muted">{{ currentBalance.amount }} PW</span>
+      </li>
+    </ul>
+
+  </div>
+</div>
